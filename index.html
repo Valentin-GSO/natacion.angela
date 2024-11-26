@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia, Estilos y Reglas de la Natación</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff6ec7, #ff9dcd); /* Fondo futurista rosa */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 100px; /* espacio para scroll */
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 50px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #ff6ec7;
+            text-shadow: 0 0 10px #ff6ec7, 0 0 20px #ff6ec7;
+            margin: 0;
+        }
+
+        section {
+            padding: 40px;
+            margin: 30px auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            max-width: 1200px;
+        }
+
+        h2 {
+            color: #ff6ec7;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff6ec7, 0 0 20px #ff6ec7;
+        }
+
+        .estilo-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .estilo-item {
+            padding: 30px;
+            border-radius: 12px;
+            color: #fff;
+            background: linear-gradient(145deg, #ff6ec7, #ff9dcd); /* Degradado rosa futurista */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .estilo-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .estilo-item h3 {
+            font-size: 2em;
+            color: #ff6ec7;
+            text-shadow: 0 0 10px #ff6ec7, 0 0 20px #ff6ec7;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 1.2em;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li::before {
+            content: "➤";
+            position: absolute;
+            left: 0;
+            color: #ff6ec7;
+            font-size: 1.5em;
+        }
+
+        /* Asegura que el diseño sea responsive */
+        @media (max-width: 768px) {
+            .estilo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animación de flores moradas futuristas cayendo */
+        @keyframes caerFlores {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+
+        .flor {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #8A2BE2; /* Color morado */
+            border-radius: 50%;
+            animation: caerFlores 5s infinite ease-in-out;
+            opacity: 0;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+        }
+
+        .flor:nth-child(odd) {
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .flor:nth-child(even) {
+            animation-duration: 4s;
+            animation-delay: 0.5s;
+        }
+
+        /* Añadir árboles de Sakura en el fondo, más visibles y definidos */
+        .arbol {
+            position: absolute;
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #8A2BE2, #DDA0DD); /* Color rosa */
+            border-radius: 10% 10% 20% 20%;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.7);
+            bottom: 10%;
+            opacity: 0.8;
+            z-index: -1; /* Asegura que los árboles estén en el fondo */
+        }
+
+        /* Árboles de Sakura con más flores */
+        .arbol-izquierda {
+            left: 10%;
+        }
+
+        .arbol-derecha {
+            right: 10%;
+        }
+
+        .flor-sakura {
+            position: absolute;
+            top: 10%;
+            width: 15px;
+            height: 15px;
+            background-color: #FF69B4; /* Rosa Sakura */
+            border-radius: 50%;
+            animation: caerFlores 6s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        .arbol-izquierda .flor-sakura:nth-child(1) {
+            left: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .arbol-izquierda .flor-sakura:nth-child(2) {
+            left: 50%;
+            animation-delay: 1.5s;
+        }
+
+        .arbol-derecha .flor-sakura:nth-child(1) {
+            left: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .arbol-derecha .flor-sakura:nth-child(2) {
+            left: 50%;
+            animation-delay: 1.0s;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Flores moradas futuristas cayendo -->
+    <div class="flor" style="left: 10%;"></div>
+    <div class="flor" style="left: 20%;"></div>
+    <div class="flor" style="left: 30%;"></div>
+    <div class="flor" style="left: 50%;"></div>
+    <div class="flor" style="left: 70%;"></div>
+
+    <!-- Árboles de Sakura en los bordes -->
+    <div class="arbol arbol-izquierda">
+        <div class="flor-sakura"></div>
+        <div class="flor-sakura"></div>
+    </div>
+    <div class="arbol arbol-derecha">
+        <div class="flor-sakura"></div>
+        <div class="flor-sakura"></div>
+    </div>
+
+    <header>
+        <h1>Historia, Estilos y Reglas de la Natación</h1>
+    </header>
+
+    <section>
+        <h2>1. Historia de la Natación</h2>
+        <p>La natación es una de las actividades más antiguas de la humanidad, con vestigios que datan de la prehistoria. Fue utilizada por civilizaciones antiguas para la guerra, el transporte y la supervivencia. A finales del siglo XIX, se organizó formalmente como deporte en Inglaterra, y en los Juegos Olímpicos de 1908, se incluyó oficialmente.</p>
+    </section>
+
+    <section>
+        <h2>2. Estilos y Reglas de la Natación</h2>
+        <div class="estilo-container">
+            <div class="estilo-item">
+                <h3>Libre (Crol)</h3>
+                <ul>
+                    <li>El nadador puede usar cualquier estilo, pero generalmente se utiliza el crol.</li>
+                    <li>La respiración debe ser continua y fluida.</li>
+                    <li>El cuerpo debe mantenerse lo más horizontal posible.</li>
+                    <li>Se debe alternar el movimiento de los brazos mientras se dan patadas continuas.</li>
+                </ul>
+            </div>
+            <div class="estilo-item">
+                <h3>Pecho</h3>
+                <ul>
+                    <li>Ambos brazos deben moverse al mismo tiempo, en un movimiento simétrico.</li>
+                    <li>Las piernas deben realizar una patada en forma de rana.</li>
+                    <li>El nadador debe mantener una postura casi horizontal en el agua.</li>
+                    <li>El tiempo de respiración debe coordinarse con los movimientos de los brazos y las piernas.</li>
+                </ul>
+            </div>
+            <div class="estilo-item">
+                <h3>Espalda</h3>
+                <ul>
+                    <li>El nadador nada de espaldas, con las piernas y los brazos alternándose.</li>
+                    <li>Las piernas deben ser rectas, con patadas continuas hacia arriba y abajo.</li>
+                    <li>La cabeza debe estar fuera del agua, mirando al cielo.</li>
+                </ul>
+            </div>
+            <div class="estilo-item">
+                <h3>Mariposa</h3>
+                <ul>
+                    <li>Este estilo utiliza ambos brazos de forma simultánea.</li>
+                    <li>Las patadas son fuertes y deben ejecutarse con los pies juntos.</li>
+                    <li>La respiración debe ser sincronizada con las brazadas.</li>
+                    <li>Es el estilo más rápido y también uno de los más exigentes.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
